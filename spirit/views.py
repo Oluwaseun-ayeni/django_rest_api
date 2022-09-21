@@ -50,7 +50,7 @@ from spirit import serializers
 
 
 class SpiritViewSet(viewsets.ModelViewSet):
-    query = Spirit.objects.all()
+    queryset = Spirit.objects.all()
     serializer_class = SpiritSerializers
 
 

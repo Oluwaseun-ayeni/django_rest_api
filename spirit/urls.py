@@ -32,7 +32,7 @@ from django.urls import path,include
 
 
 router = SimpleRouter()
-router.register('spirit', views.SpiritViewSet)
+router.register('spirit', views.SpiritViewSet,basename="spirit")
 
 urlpatterns = [
     path('', include(router.urls)),
