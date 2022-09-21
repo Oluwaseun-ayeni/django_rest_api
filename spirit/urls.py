@@ -13,15 +13,31 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+# from django.contrib import admin
+# from django.urls import path
+# from spirit import views
+# from rest_framework.urlpatterns import format_suffix_patterns
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('spirits/', views.drink_link ),
+#     path('spirits/<int:id>', views.drink_details)
+# ]
+
+# urlpatterns= format_suffix_patterns(urlpatterns)
+
+from rest_framework.routers import *
 from spirit import views
-from rest_framework.urlpatterns import format_suffix_patterns
+from django.urls import path,include
+
+
+router = SimpleRouter()
+router.register('spirit', views.SpiritViewSet)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('spirits/', views.drink_link ),
-    path('spirits/<int:id>', views.drink_details)
+    path('', include(router.urls)),
+    
 ]
 
-urlpatterns= format_suffix_patterns(urlpatterns)
+
+
